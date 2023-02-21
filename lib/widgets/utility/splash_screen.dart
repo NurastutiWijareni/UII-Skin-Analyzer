@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main_screen.dart';
-import '../onboarding_screen/onboarding_screen.dart';
+import '../onboarding/onboarding_screen.dart';
 
 //* https://blog.logrocket.com/make-splash-screen-flutter/
 class SplashScreen extends StatefulWidget {
