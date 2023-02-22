@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "692283951175",
+    "project_id": "uiiskinanalyzer-621b6",
+    "storage_bucket": "uiiskinanalyzer-621b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692283951175:android:65a5ab26da1d184ff4c962",
+        "android_client_info": {
+          "package_name": "com.example.uii_skin_analyzer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "692283951175-idvfdo0m0u44ru1va8pva9l49fi5galk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSwzDRDTvMu-DMxD38-oJCvEIwbOUyFcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "692283951175-idvfdo0m0u44ru1va8pva9l49fi5galk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

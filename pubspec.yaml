@@ -31,6 +31,9 @@ environment:
 dependencies:
   camera: ^0.10.0+4
   cupertino_icons: ^1.0.2
+  firebase_auth: ^4.2.9
+  firebase_core: ^2.7.0
+  firebase_storage: ^11.0.14
   fl_chart: ^0.55.2
   flutter:
     sdk: flutter
