@@ -9,10 +9,11 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 
-import './jerawat_analysis_widget.dart';
+import './analysis_result_widget.dart';
 import '../utility/camera_screen.dart';
 import '../../helpers/db.dart';
 import '../../helpers/json.dart';
+import '../../models/deteksi_model.dart';
 
 class JerawatAnalysisScreen extends StatefulWidget {
   const JerawatAnalysisScreen({super.key});
@@ -25,7 +26,7 @@ class JerawatAnalysisScreen extends StatefulWidget {
 
 class _JerawatAnalysisScreenState extends State<JerawatAnalysisScreen> {
   File? _imageFile;
-  List<Jerawat> _jerawatData = [];
+  List<DeteksiModel> _jerawatData = [];
   int _jerawatCount = 0;
   bool _isServerError = false;
   bool _isUploadingImage = false;
@@ -127,7 +128,7 @@ class _JerawatAnalysisScreenState extends State<JerawatAnalysisScreen> {
 
     var request = http.MultipartRequest(
       'POST',
-      Uri.parse("http://192.168.132.138:5000/deteksi_jerawat"),
+      Uri.parse("http://192.168.126.138:5000/deteksi_jerawat"),
     );
     request.files.add(
       http.MultipartFile(
@@ -198,6 +199,8 @@ class _JerawatAnalysisScreenState extends State<JerawatAnalysisScreen> {
                   backgroundColor: const Color(0xFF0E6CDB),
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.all(0),
+                  disabledBackgroundColor: const Color(0xFF0E6CDB),
+                  disabledForegroundColor: Colors.white,
                 ),
                 child: const Icon(Icons.save),
               ),
@@ -249,12 +252,13 @@ class _JerawatAnalysisScreenState extends State<JerawatAnalysisScreen> {
       backgroundColor: const Color(0xFFEFF5FF),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        child: JerawatAnalysisWidget(
+        child: AnalysisResultWidget(
           isServerError: _isServerError,
-          jerawatCount: _jerawatCount,
           imageFile: _imageFile,
-          jerawatData: _jerawatData,
-          saveImageButton: _saveImageButton(),
+          objectData: _jerawatData,
+          notificationMessage: 'Terdeteksi $_jerawatCount Jerawat',
+          saveResultButton: _saveImageButton(),
+          canvasColor: const Color(0xff1572A1),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

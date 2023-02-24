@@ -1,3 +1,5 @@
+import 'package:uii_skin_analyzer/models/deteksi_model.dart';
+
 class JSONResult {
   DeteksiObjek? deteksiObjek;
 
@@ -17,15 +19,39 @@ class JSONResult {
 }
 
 class DeteksiObjek {
-  List<Jerawat>? jerawat;
+  List<DeteksiModel>? jerawat;
+  List<DeteksiModel>? keriput;
+  List<DeteksiModel>? kemerahan;
+  List<DeteksiModel>? bercakHitam;
 
-  DeteksiObjek({this.jerawat});
+  DeteksiObjek({this.jerawat, this.keriput, this.kemerahan, this.bercakHitam});
 
   DeteksiObjek.fromJson(Map<String, dynamic> json) {
     if (json['jerawat'] != null) {
-      jerawat = <Jerawat>[];
+      jerawat = <DeteksiModel>[];
       json['jerawat'].forEach((v) {
-        jerawat!.add(Jerawat.fromJson(v));
+        jerawat!.add(DeteksiModel.fromJson(v));
+      });
+    }
+
+    if (json['keriput'] != null) {
+      keriput = <DeteksiModel>[];
+      json['keriput'].forEach((v) {
+        keriput!.add(DeteksiModel.fromJson(v));
+      });
+    }
+
+    if (json['kemerahan'] != null) {
+      kemerahan = <DeteksiModel>[];
+      json['kemerahan'].forEach((v) {
+        kemerahan!.add(DeteksiModel.fromJson(v));
+      });
+    }
+
+    if (json['bintik_hitam'] != null) {
+      bercakHitam = <DeteksiModel>[];
+      json['bintik_hitam'].forEach((v) {
+        bercakHitam!.add(DeteksiModel.fromJson(v));
       });
     }
   }
@@ -35,34 +61,19 @@ class DeteksiObjek {
     if (jerawat != null) {
       data['jerawat'] = jerawat!.map((v) => v.toJson()).toList();
     }
-    return data;
-  }
-}
 
-class Jerawat {
-  double? xmax;
-  double? ymax;
-  double? xmin;
-  double? ymin;
-  double? score;
+    if (keriput != null) {
+      data['keriput'] = keriput!.map((v) => v.toJson()).toList();
+    }
 
-  Jerawat({this.xmax, this.ymax, this.xmin, this.ymin, this.score});
+    if (kemerahan != null) {
+      data['kemerahan'] = kemerahan!.map((v) => v.toJson()).toList();
+    }
 
-  Jerawat.fromJson(Map<String, dynamic> json) {
-    xmax = json['xmax'];
-    ymax = json['ymax'];
-    xmin = json['xmin'];
-    ymin = json['ymin'];
-    score = json['score'];
-  }
+    if (bercakHitam != null) {
+      data['bintik_hitam'] = bercakHitam!.map((v) => v.toJson()).toList();
+    }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['xmax'] = xmax;
-    data['ymax'] = ymax;
-    data['xmin'] = xmin;
-    data['ymin'] = ymin;
-    data['score'] = score;
     return data;
   }
 }

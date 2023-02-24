@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import './calendar_widget.dart';
-import '../analysis/jerawat_analysis_widget.dart';
-import '../../helpers/json.dart';
+import '../analysis/analysis_result_widget.dart';
+import '../../models/deteksi_model.dart';
 import '../../models/analysis_history.dart';
 
 class JerawatHistoryScreen extends StatelessWidget {
@@ -23,12 +23,12 @@ class JerawatHistoryScreen extends StatelessWidget {
     _selectedEvent.value = getEventForDay(selectedDay);
   }
 
-  List<Jerawat> _generateJerawats(String rawData) {
-    List<Jerawat> jerawats = [];
+  List<DeteksiModel> _generateJerawats(String rawData) {
+    List<DeteksiModel> jerawats = [];
     var decodedJSON = json.decode(rawData);
     for (var i = 0; i < decodedJSON.length; i++) {
       if (decodedJSON[i]['score'] > 0.3) {
-        var jerawat = Jerawat(
+        var jerawat = DeteksiModel(
           xmax: decodedJSON[i]['xmax'],
           ymax: decodedJSON[i]['ymax'],
           xmin: decodedJSON[i]['xmin'],
@@ -93,10 +93,11 @@ class JerawatHistoryScreen extends StatelessWidget {
                 builder: (ctx, value, _) {
                   return (value.isEmpty)
                       ? const SizedBox()
-                      : JerawatAnalysisWidget(
-                          jerawatCount: _generateJerawats(value[0].jerawatResult!).length,
+                      : AnalysisResultWidget(
+                          notificationMessage: 'Terdeteksi ${_generateJerawats(value[0].jerawatResult!).length} Jerawat',
                           imageFile: File(value[0].imagePath),
-                          jerawatData: _generateJerawats(value[0].jerawatResult!),
+                          objectData: _generateJerawats(value[0].jerawatResult!),
+                          canvasColor: const Color(0xff1572A1),
                         );
                 },
               ),

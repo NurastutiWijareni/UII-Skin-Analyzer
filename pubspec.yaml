@@ -203,6 +203,9 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/images/keriput.png
+    - assets/images/kemerahan.jpg
+    - assets/images/bintik_hitam.jpg
     - assets/images/onboarding_illustrations/
     - assets/images/home_illustrations/
     - assets/images/icons/

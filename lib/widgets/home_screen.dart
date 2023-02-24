@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import './analysis/jerawat_analysis_screen.dart';
+import './analysis/keriput_analysis_screen.dart';
+import './analysis/kemerahan_analysis_screen.dart';
+import './analysis/bercak_hitam_analysis_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -104,7 +107,9 @@ class HomeScreen extends StatelessWidget {
                 buttonTitle: "Keriput",
                 imagePath: "assets/images/home_illustrations/keriput.png",
                 color: const Color(0xFFFFBBBB),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(KeriputAnalysisScreen.routeName);
+                },
                 buttonWidth: 0.5,
                 context: context,
               ),
@@ -112,7 +117,9 @@ class HomeScreen extends StatelessWidget {
                 buttonTitle: "Kemerahan",
                 imagePath: "assets/images/home_illustrations/kemerahan.png",
                 color: const Color(0xFFF880AB),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(KemerahanAnalysisScreen.routeName);
+                },
                 buttonWidth: 0.5,
                 context: context,
               ),
@@ -124,7 +131,9 @@ class HomeScreen extends StatelessWidget {
                 buttonTitle: "Bercak Hitam",
                 imagePath: "assets/images/home_illustrations/bercak-hitam.png",
                 color: const Color(0xFF8FE1AE),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(BercakHitamAnalysisScreen.routeName);
+                },
                 buttonWidth: 0.5,
                 context: context,
               ),

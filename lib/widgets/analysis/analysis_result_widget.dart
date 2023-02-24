@@ -4,24 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import '../utility/notification_card_widget.dart';
-import '../../helpers/json.dart';
-import '../../helpers/draw_circle.dart';
+import '../../models/deteksi_model.dart';
+import '../../helpers/draw_in_canvas.dart';
 
-class JerawatAnalysisWidget extends StatelessWidget {
-  const JerawatAnalysisWidget({
+class AnalysisResultWidget extends StatelessWidget {
+  const AnalysisResultWidget({
     super.key,
     this.isServerError = false,
-    required this.jerawatCount,
+    required this.notificationMessage,
     required this.imageFile,
-    required this.jerawatData,
-    this.saveImageButton = const SizedBox(),
+    required this.objectData,
+    this.saveResultButton = const SizedBox(),
+    required this.canvasColor,
   });
 
   final bool isServerError;
-  final int jerawatCount;
+  final String notificationMessage;
   final File? imageFile;
-  final List<Jerawat> jerawatData;
-  final Widget saveImageButton;
+  final List<DeteksiModel> objectData;
+  final Widget saveResultButton;
+  final Color canvasColor;
 
   Widget _buildNotificationCard() {
     if (isServerError) {
@@ -29,10 +31,9 @@ class JerawatAnalysisWidget extends StatelessWidget {
           cardColor: Color(0xFFC61717), cardIcon: Icons.cancel_outlined, cardText: 'Maaf, Server sedang tidak tersedia');
     }
 
-    if (jerawatData.isEmpty) return const SizedBox();
+    if (objectData.isEmpty) return const SizedBox();
 
-    return NotificationCard(
-        cardColor: const Color(0xFF17C672), cardIcon: Icons.check_circle_outline, cardText: 'Terdeteksi $jerawatCount jerawat');
+    return NotificationCard(cardColor: const Color(0xFF17C672), cardIcon: Icons.check_circle_outline, cardText: notificationMessage);
   }
 
   @override
@@ -57,8 +58,10 @@ class JerawatAnalysisWidget extends StatelessWidget {
               children: [
                 _buildNotificationCard(),
                 CustomPaint(
-                  foregroundPainter: DrawCircle(
-                    jerawats: jerawatData,
+                  foregroundPainter: DrawInCanvas(
+                    color: canvasColor,
+                    strokeWidth: 3,
+                    objects: objectData,
                   ),
                   child: Stack(
                     children: [
@@ -75,7 +78,7 @@ class JerawatAnalysisWidget extends StatelessWidget {
                           fit: BoxFit.contain,
                         ),
                       ),
-                      saveImageButton,
+                      saveResultButton,
                     ],
                   ),
                 ),

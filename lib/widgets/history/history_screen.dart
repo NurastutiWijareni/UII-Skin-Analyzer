@@ -1,10 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:uii_skin_analyzer/widgets/history/chart_card_history.dart';
 
 import './calendar_card_history.dart';
-import '../../helpers/json.dart';
 import '../../helpers/db.dart';
 import '../../models/analysis_history.dart';
 

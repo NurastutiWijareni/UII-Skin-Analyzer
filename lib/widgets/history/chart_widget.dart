@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-import '../../helpers/json.dart';
+import '../../models/deteksi_model.dart';
 import '../../models/analysis_history.dart';
 
 class ChartWidget extends StatelessWidget {
@@ -16,12 +16,12 @@ class ChartWidget extends StatelessWidget {
     Color(0xff02d39a),
   ];
 
-  List<Jerawat> _generateJerawats(String rawData) {
-    List<Jerawat> jerawats = [];
+  List<DeteksiModel> _generateJerawats(String rawData) {
+    List<DeteksiModel> jerawats = [];
     var decodedJSON = json.decode(rawData);
     for (var i = 0; i < decodedJSON.length; i++) {
       if (decodedJSON[i]['score'] > 0.3) {
-        var jerawat = Jerawat(
+        var jerawat = DeteksiModel(
           xmax: decodedJSON[i]['xmax'],
           ymax: decodedJSON[i]['ymax'],
           xmin: decodedJSON[i]['xmin'],
