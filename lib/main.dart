@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import './widgets/utility/splash_screen.dart';
 import './widgets/onboarding/onboarding_screen.dart';
@@ -12,6 +13,7 @@ import './widgets/analysis/bercak_hitam_analysis_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await initializeDateFormatting('id_ID', null);
 
   runApp(const Main());
 }

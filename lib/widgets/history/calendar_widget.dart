@@ -76,6 +76,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
           shape: BoxShape.circle,
         ),
       ),
+      locale: "id_ID",
       calendarFormat: widget.calendarFormat,
       selectedDayPredicate: (day) {
         return isSameDay(_selectedDay, day);
