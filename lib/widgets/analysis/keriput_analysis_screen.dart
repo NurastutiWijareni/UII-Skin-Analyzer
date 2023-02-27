@@ -88,9 +88,9 @@ class _KeriputAnalysisScreenState extends State<KeriputAnalysisScreen> {
 
   @override
   void initState() {
-    super.initState();
-
     getFileData('keriput.png');
+
+    super.initState();
   }
 
   @override

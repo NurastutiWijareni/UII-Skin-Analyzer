@@ -88,9 +88,9 @@ class _BercakHitamAnalysisScreenState extends State<BercakHitamAnalysisScreen> {
 
   @override
   void initState() {
-    super.initState();
-
     getFileData('bintik_hitam.jpg');
+
+    super.initState();
   }
 
   @override

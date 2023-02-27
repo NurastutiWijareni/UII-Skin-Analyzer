@@ -88,9 +88,9 @@ class _KemerahanAnalysisScreenState extends State<KemerahanAnalysisScreen> {
 
   @override
   void initState() {
-    super.initState();
-
     getFileData('kemerahan.jpg');
+
+    super.initState();
   }
 
   @override

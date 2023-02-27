@@ -80,9 +80,9 @@ class _ChartCardHistoryState extends State<ChartCardHistory> {
 
   @override
   void initState() {
-    super.initState();
-
     filteredAnalysisHistory = widget.analysisHistory.where((obj) => DateTime.parse(obj.date).month == DateTime.now().month).toList();
+
+    super.initState();
   }
 
   @override

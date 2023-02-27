@@ -75,8 +75,8 @@ class _JerawatAnalysisScreenState extends State<JerawatAnalysisScreen> {
     setState(() {
       _isUploadingImage = true;
     });
-    final dateNow = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2);
-    final date = '${DateTime.now().year}${DateTime.now().month}${DateTime.now().day + 2}';
+    final dateNow = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+    final date = '${DateTime.now().year}${DateTime.now().month}${DateTime.now().day}';
 
     final dateFormat = DateFormat.yMd().format(dateNow);
     final jsonData = json.encode(_jerawatData);
@@ -128,7 +128,7 @@ class _JerawatAnalysisScreenState extends State<JerawatAnalysisScreen> {
 
     var request = http.MultipartRequest(
       'POST',
-      Uri.parse("http://192.168.126.138:5000/deteksi_jerawat"),
+      Uri.parse("http://192.168.100.13:5000/deteksi_jerawat"),
     );
     request.files.add(
       http.MultipartFile(
@@ -211,9 +211,9 @@ class _JerawatAnalysisScreenState extends State<JerawatAnalysisScreen> {
 
   @override
   void initState() {
-    super.initState();
-
     _fetchCachedImage();
+
+    super.initState();
   }
 
   @override

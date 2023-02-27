@@ -98,7 +98,6 @@ class CameraScreenState extends State<CameraScreen> with WidgetsBindingObserver 
 
   @override
   void initState() {
-    super.initState();
     try {
       WidgetsFlutterBinding.ensureInitialized();
       availableCameras().then(
@@ -110,6 +109,8 @@ class CameraScreenState extends State<CameraScreen> with WidgetsBindingObserver 
     } on CameraException catch (e) {
       // print('Error in fetching the cameras: $e');
     }
+
+    super.initState();
   }
 
   @override
@@ -130,6 +131,7 @@ class CameraScreenState extends State<CameraScreen> with WidgetsBindingObserver 
   @override
   void dispose() {
     _controller?.dispose();
+
     super.dispose();
   }
 

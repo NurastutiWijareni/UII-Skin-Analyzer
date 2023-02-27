@@ -43,11 +43,11 @@ class _CalendarWidgetState extends State<CalendarWidget> {
 
   @override
   void initState() {
-    super.initState();
-
     _focusedDay = widget.date ?? DateTime.now();
     _selectedDay = _focusedDay;
     widget.onChangeDate(widget.date ?? _focusedDay, _getEventForDay);
+
+    super.initState();
   }
 
   @override

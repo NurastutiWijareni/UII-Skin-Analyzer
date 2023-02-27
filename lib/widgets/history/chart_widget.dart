@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 
-import '../../models/deteksi_model.dart';
+import '../../helpers/functions.dart';
 import '../../models/analysis_history.dart';
 
 class ChartWidget extends StatelessWidget {
@@ -16,24 +14,6 @@ class ChartWidget extends StatelessWidget {
     Color(0xff23b6e6),
     Color(0xff02d39a),
   ];
-
-  List<DeteksiModel> _generateJerawats(String rawData) {
-    List<DeteksiModel> jerawats = [];
-    var decodedJSON = json.decode(rawData);
-    for (var i = 0; i < decodedJSON.length; i++) {
-      if (decodedJSON[i]['score'] > 0.3) {
-        var jerawat = DeteksiModel(
-          xmax: decodedJSON[i]['xmax'],
-          ymax: decodedJSON[i]['ymax'],
-          xmin: decodedJSON[i]['xmin'],
-          ymin: decodedJSON[i]['ymin'],
-          score: decodedJSON[i]['score'],
-        );
-        jerawats.add(jerawat);
-      }
-    }
-    return jerawats;
-  }
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
@@ -196,7 +176,7 @@ class ChartWidget extends StatelessWidget {
                 .map(
                   (item) => FlSpot(
                     DateTime.parse(item.date).day.toDouble(),
-                    _generateJerawats(item.jerawatResult!).length.toDouble(),
+                    generateJerawats(item.jerawatResult!).length.toDouble(),
                   ),
                 )
                 .toList(),
